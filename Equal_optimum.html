@@ -11,14 +11,29 @@
         function isEqual(value,othervalue){     
             
             if(typeof value=="boolean"|| typeof value=="number" || typeof value=="string"){
-                if(value==othervalue) return true
-                else return false
+                if(value!==othervalue) return false
+               
             }
             else if (Array.isArray(value)&& Array.isArray(othervalue)){
-                
+                if(value.length!==othervalue.length) return false
+                else{
+                    for (let index = 0; index < value.length; index++) {
+                        if(value[index]==othervalue[index]){
+                            return true
+                        }
+                        else{
+                            return false;
+                        }
+                        
+                    }
+                }
             }
+            
+          
         }
+          
 
+             console.log(isEqual())
     </script>
 </body>
 </html>
