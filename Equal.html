@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function isEqual(value,othervalue){            
+            if(typeof(value) && typeof(othervalue)=="boolean"||typeof(value) && typeof(othervalue)=="number"||typeof(value) && typeof(othervalue)=="string"){
+                if(value==othervalue){
+                return true
+                }
+                else{
+                    return false
+                }
+            }
+            else if(typeof(value) && typeof(othervalue)=="object"){
+                const keys1 = Object.keys(value);
+                const keys2 = Object.keys(othervalue);
+                if (keys1.length !== keys2.length) {
+                     return false;
+                }
+                for (const key of keys1) {
+                    if (!keys2.includes(key) || !isEqual(value[key], othervalue[key])) return false;
+                       
+                    
+                }    
+            }
+           
+            return true;
+        }
+        
+        const person1 = {
+            'car': {
+                'inside': {
+                    'glove box': 'maps',
+                    'passenger seat': 'crumbs'
+                },
+                'outside': [
+                    'jack',"tanushi"
+                ]
+            }
+        };
+        const person2={
+            'car': {
+                'inside': {
+                    'glove box': 'maps',
+                    'passenger seat': 'crumbs'
+                },
+                'outside': [
+                    'jack',"tanushi"
+                ]
+            }
+        }
+        console.log(isEqual(person1, person2))
+
+    </script>
+</body>
+</html>
