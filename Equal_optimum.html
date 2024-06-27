@@ -3,59 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>isEqual method</title>
+    <title>Document</title>
 </head>
 <body>
-    <h2>isEqual method</h2>
-    <script>
-        function isEqual(value,othervalue){     
-            
-            if(typeof value=="boolean"|| typeof value=="number" || typeof value=="string"){
-                if(value!==othervalue) return false
-               
+    <h2>isEqual optimum approach</h2>
+   <script>
+    function isEqual(value, other) {
+        if (value === other||Number.isNaN(value) && Number.isNaN(other)) {
+            return true;
+        }
+
+        if (Array.isArray(value) && Array.isArray(other)) {
+            if (value.length !== other.length) {
+                return false;
             }
-            else if (Array.isArray(value)&& Array.isArray(othervalue)){
-                if(value.length!==othervalue.length) return false
-                else{
-                    for (let index = 0; index < value.length; index++) {
-                        if(value[index]==othervalue[index]){
-                            return true
-                        }
-                        else{
-                            return false;
-                        }
-                        
-                    }
+        
+        for (let i = 0; i < value.length; i++) {
+            if (!isEqual(value[i], other[i])) {
+                return false;
+            }
+        }
+        return true;
+        }
+        else {
+            const keysA = Object.keys(value);
+            const keysB = Object.keys(other);
+            if (keysA.length !== keysB.length) {
+                 return false;
+            }
+            for (let key of keysA) {
+                 if (!isEqual(value[key], other[key])) {
+                    return false;
                 }
             }
-            
-          
+            return true;
         }
-          
+     return false;
+}
 
-             console.log(isEqual())
-    </script>
+
+
+   </script> 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
