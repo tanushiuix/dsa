@@ -6,7 +6,7 @@ class LazyManHelper{
       this.greet();
       setTimeout(()=>{
         this.executeEvents();
-      },0);
+      },0)
     }
   
     greet(){
